@@ -1,6 +1,8 @@
 ## Test Driven Sample
 
-### Local Setup using Laravel Valet
+Built with Laravel 10. It requires PHP 8.1+ to run. 
+
+### Local Setup
 After cloning the repo, following the next steps:
 
 - install deps:

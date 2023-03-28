@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
+    Route::get('/{user}', [UsersController::class, 'show'])->name('show');
+    Route::patch('/{user}', [UsersController::class, 'edit'])->name('edit');
+    Route::delete('/{user}', [UsersController::class, 'delete'])->name('delete');
+
+    Route::post('/', [UsersController::class, 'store'])->name('store');
+    Route::get('/', [UsersController::class, 'index'])->name('all');
 });

@@ -62,5 +62,15 @@ class UsersControllerTest extends TestCase
         $response->assertSeeText($user->name);
         $response->assertSeeText($user->email);
     }
+
+    public function test_user_can_be_deleted(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->get(route('api.users.delete', ['user' => $user->id]));
+
+        $response->assertStatus(200);
+        $response->assertSeeText('user deleted');
+    }
 }
 
